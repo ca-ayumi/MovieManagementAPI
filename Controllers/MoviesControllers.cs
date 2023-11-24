@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace MovieManagementAPI.Controllers
 {
 
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MoviesController : ControllerBase
