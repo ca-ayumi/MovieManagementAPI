@@ -45,12 +45,6 @@ namespace MovieManagementAPI
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MovieManagementAPI", Description = "API para gerenciar filmes", Version = "v1" });
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Description = "JWT Authorization header using the Bearer scheme.",
-                    Type = SecuritySchemeType.Http,
-                    Scheme = "bearer"
-                });
             });
 
 
@@ -68,6 +62,7 @@ namespace MovieManagementAPI
                             ValidAudience = Configuration["Jwt:Audience"],
                             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                         };
+                        
                     });
 
          }
