@@ -44,8 +44,15 @@ namespace MovieManagementAPI
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MovieManagementAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MovieManagementAPI", Description = "API para gerenciar filmes", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme.",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer"
+                });
             });
+
 
             // Configuração do JWT
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -65,7 +72,7 @@ namespace MovieManagementAPI
 
          }
 
-         
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
